@@ -79,7 +79,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     qcom.hw.aac.encoder=true \
     tunnel.audio.encode=true \
     media.aac_51_output_enabled=true \
-    audio.offload.pcm.enable=true
+    audio.offload.pcm.enable=true 
 
 # Charger
 PRODUCT_PACKAGES += \
@@ -243,7 +243,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
     wifi.supplicant_scan_interval=15 \
     ro.qualcomm.perf.cores_online=2 \
     debug.composition.type=dyn \
-    qemu.hw.mainkeys=1
+    qemu.hw.mainkeys=1 \
+    view.scroll_friction=1 \
+    ro.min_pointer_dur=8 \
+    ro.min_fling_velocity=8000 \
+    ro.max_fling_velocity=16000
 
 # Permissions
 PRODUCT_COPY_FILES += \
