@@ -41,7 +41,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_effects.conf:system/vendor/etc/audio_effects.conf \
     $(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf \
-    $(LOCAL_PATH)/audio/mixer_paths.xml:system/etc/mixer_paths.xml \
     $(LOCAL_PATH)/audio/audio_platform_info.xml:system/etc/audio_platform_info.xml \
     $(LOCAL_PATH)/audio/acdb/MTP_Bluetooth_cal.acdb:system/etc/acdbdata/MTP/MTP_Bluetooth_cal.acdb \
     $(LOCAL_PATH)/audio/acdb/MTP_General_cal.acdb:system/etc/acdbdata/MTP/MTP_General_cal.acdb \
@@ -74,11 +73,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
     av.offload.enable=true \
     av.streaming.offload.enable=true \
     use.voice.path.for.pcm.voip=true \
-    audio.offload.gapless.enabled=false \
+    audio.offload.multiple.enabled=false \
+    audio.offload.gapless.enabled=true \
     qcom.hw.aac.encoder=true \
     tunnel.audio.encode=true \
     media.aac_51_output_enabled=true \
-    audio.offload.pcm.enable=true 
+    audio.offload.pcm.enable=true \
+    audio.offload.24bit.enable=1
 
 # Charger
 PRODUCT_PACKAGES += \
@@ -170,7 +171,7 @@ PRODUCT_PACKAGES += \
 
 # Thermal config
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/thermal-engine-8974.conf:system/etc/thermal-engine-8974.conf
+    $(LOCAL_PATH)/configs/thermal-engine.conf:system/etc/thermal-engine-8974.conf
 
 # Torch
 PRODUCT_PACKAGES += \
@@ -203,6 +204,11 @@ PRODUCT_PACKAGES += \
     curl \
     libnl_2 \
     libbson
+
+# ANT+
+PRODUCT_PACKAGES += \
+    libantradio \
+    AntHalService
 
 # Set default USB interface
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
@@ -249,7 +255,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     view.scroll_friction=1 \
     ro.min_pointer_dur=8 \
     ro.min_fling_velocity=8000 \
-    ro.max_fling_velocity=16000
+    ro.max_fling_velocity=16000 \
+    ro.telephony.call_ring.multiple=0
 
 # Permissions
 PRODUCT_COPY_FILES += \
